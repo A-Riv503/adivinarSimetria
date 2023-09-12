@@ -16,55 +16,45 @@ public class Main {
     }
 
     public static void datosMatriz(){
-        int matriz[][];
-        int numFilas;
-        int numColumnas;
+        int n;
 
-        System.out.println("ingrese el numero de filas de su matriz");
-        numFilas=scan.nextInt();
-        System.out.println("ingrese el numero de columnas");
-        numColumnas=scan.nextInt();
 
-        matriz=new int[numFilas][numColumnas];
 
-        llenarMatriz(matriz,numFilas,numColumnas);
+        System.out.println("ingrese el valor de n");
+        n=scan.nextInt();
+
+
+        char arreglo1[]=new char[n];
+        
+
+        llenarMatriz(arreglo1,n);
 
     }
 
-    public static void llenarMatriz(int matriz[][],int numFilas,int numColumnas){
-        for(int i=0;i<numFilas;i++){
-            for(int j=0;j<numColumnas;j++){
-                System.out.println("ingrese los elementos de su matriz en la pocicion "+i+" y "+j);
-                matriz[i][j]=scan.nextInt();
+    public static void llenarMatriz(char arreglo1[],int n){
+        for(int i=0;i<n;i++){
+            System.out.println("ingrese los elementos de su primer arreglo");
+            arreglo1[i]=scan.next().charAt(0);
+        }
+
+        comprobarSimetria(arreglo1,n);
+
+    }
+
+    public static void comprobarSimetria(char arreglo1[],int n){
+        boolean simetria=true;
+        int i;
+
+        for(i=0;i<n;i++){
+            if(arreglo1[i]!=arreglo1[n-1-i]){
+                simetria=false;
             }
         }
-        comprobarSimetria(matriz,numFilas,numColumnas);
 
-    }
-
-    public static void comprobarSimetria(int matriz[][],int numFilas, int numColumnas){
-        boolean simetria=true;
-        if(numFilas==numColumnas){
-            int i,j;
-            i=0;
-            while(i<numFilas && simetria==true){
-                j=0;
-                while(j<numColumnas && simetria==true){
-                    if(matriz[i][j]!=matriz[j][i]){
-                        simetria=false;
-                    }
-                    j++;
-                }
-                i++;
-            }
-            if(simetria==true){
-                System.out.println("Symmetric");
-            }else{
-                System.out.println("Asymmetric");
-            }
+        if(simetria==true){
+            System.out.println("Symmetric");
         }else{
             System.out.println("Asymmetric");
-
         }
     }
 }
